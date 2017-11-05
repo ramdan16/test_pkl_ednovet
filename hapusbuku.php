@@ -8,16 +8,16 @@ $query = "SELECT * FROM t_buku WHERE id='".$id."'";
 $sql = mysqli_query($koneksi, $query); // Eksekusi/Jalankan query dari variabel $query
 $data = mysqli_fetch_array($sql); // Ambil data dari hasil eksekusi $sql
 // Cek apakah file fotonya ada di folder images
-if(is_file("images/".$data['foto'])) // Jika foto ada
-  unlink("images/".$data['foto']); // Hapus foto yang telah diupload dari folder images
+if(is_file("gambar/".$data['foto'])) // Jika foto ada
+  unlink("gambar/".$data['foto']); // Hapus foto yang telah diupload dari folder images
 // Query untuk menghapus data buku berdasarkan id yang dikirim
 $query2 = "DELETE FROM t_buku WHERE id_buku='".$id."'";
 $sql2 = mysqli_query($koneksi, $query2); // Eksekusi/Jalankan query dari variabel $query
 if($sql2){ // Cek jika proses simpan ke database sukses atau tidak
   // Jika Sukses, Lakukan :
-  header("location: databuku2.php"); // Redirect ke halaman index.php
+  header("location: index.php"); // Redirect ke halaman index.php
 }else{
   // Jika Gagal, Lakukan :
-  echo "Data gagal dihapus. <a href='databuku2.php'>Kembali</a>";
+  echo "Data gagal dihapus. <a href='index.php'>Kembali</a>";
 }
 ?>
